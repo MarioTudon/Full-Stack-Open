@@ -1,6 +1,7 @@
 import Course from "./Course"
+import { useState } from "react"
 
-function App() {
+function App(props) {
   const courses = [
     {
       name: 'Half Stack application development',
@@ -27,7 +28,7 @@ function App() {
           id: 4
         }
       ]
-    }, 
+    },
     {
       name: 'Node.js',
       id: 2,
