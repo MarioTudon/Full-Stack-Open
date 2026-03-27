@@ -23,31 +23,37 @@ function App() {
 
     if (!newName) {
       alert("Name can't be blank")
+      setNewName('')
+      setNewNumber('')
       return
     }
 
     if (!newNumber) {
       alert("Number can't be blank")
-      return
-    }
-
-    if (persons.some(p => p.name === newName)) {
-      alert(`${newName} is already added to phonebook`)
       setNewName('')
-      setFilter('')
-      return
-    }
-
-    if (persons.some(p => p.number === newNumber)) {
-      alert(`number ${newNumber} is already linked to a name`)
       setNewNumber('')
-      setFilter('')
       return
     }
 
     const newPerson = {
       name: newName,
       number: newNumber
+    }
+
+    if (persons.some(p => p.name === newName)) {
+      const person = persons.find(person => person.name === newName)
+      if (!window.confirm(`${person.name} is already added to phonebook, replace the old number with a new one?`)) return
+
+      newPerson.id = person.id
+
+      personsService.update(person.id, newPerson)
+        .then(data => {
+          setPersons(prev => prev.map(person => person.id !== data.id ? person : newPerson))
+        })
+
+      setNewName('')
+      setNewNumber('')
+      return
     }
 
     personsService.create(newPerson)
@@ -60,9 +66,15 @@ function App() {
   }
 
   const deleteName = (id) => {
+    const person = persons.find(person => person.id === id)
+    if (!person) return
+
+    if (!window.confirm(`Delete ${person.name}?`)) return
+
     personsService.remove(id)
       .then(data => {
-        setPersons(prev => prev.filter(person => person.id != data.id))})
+        setPersons(prev => prev.filter(person => person.id != data.id))
+      })
   }
 
   return (
