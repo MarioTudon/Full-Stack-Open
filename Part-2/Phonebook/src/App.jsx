@@ -13,9 +13,8 @@ function App() {
 
   useEffect(() => {
     personsService.getAll()
-      .then(response => {
-        console.log(response)
-        setPersons(response)
+      .then(data => {
+        setPersons(data)
       })
   }, [])
 
@@ -48,13 +47,12 @@ function App() {
 
     const newPerson = {
       name: newName,
-      number: newNumber,
-      id: persons.length + 1
+      number: newNumber
     }
 
     personsService.create(newPerson)
-      .then(response => {
-        setPersons(prev => [...prev, response])
+      .then(data => {
+        setPersons(prev => [...prev, data])
       })
 
     setNewName('')
@@ -62,7 +60,9 @@ function App() {
   }
 
   const deleteName = (id) => {
-    console.log(id)
+    personsService.remove(id)
+      .then(data => {
+        setPersons(prev => prev.filter(person => person.id != data.id))})
   }
 
   return (
