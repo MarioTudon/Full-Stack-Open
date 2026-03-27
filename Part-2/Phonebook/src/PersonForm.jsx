@@ -1,4 +1,3 @@
-import { useState } from "react"
 
 const PersonForm = ({addName, newName, setNewName, newNumber, setNewNumber}) => {
     return (
