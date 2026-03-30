@@ -1,0 +1,106 @@
+/* -------- RESET -------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    background: #f7f9fc;
+    color: #222;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#root {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* -------- FILTER -------- */
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    font-size: 1.1rem;
+    margin-right: 10px;
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-container input {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 250px;
+    transition: border 0.2s ease;
+}
+
+.filter-container input:focus {
+    border-color: #0077ff;
+    outline: none;
+}
+
+/* -------- COUNTRIES LIST -------- */
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: white;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #e3e3e3;
+}
+
+button {
+    background: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #005ed6;
+}
+
+
+/* -------- COUNTRY DETAILS -------- */
+.country-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.country-container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.country-container div {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.country-container img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
